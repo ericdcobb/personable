@@ -1,5 +1,13 @@
 package com.levelsbeyond.personable.main;
 
+
+
+import com.levelsbeyond.personable.lang.PersonableGrammarLexer;
+import com.levelsbeyond.personable.lang.PersonableGrammarParser;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
+
 import java.io.FileInputStream;
 import java.io.InputStream;
 
@@ -16,6 +24,15 @@ public class Personable {
 		if ( args.length>0 ) inputFile = args[0];
 		InputStream is = System.in;
 		if ( inputFile!=null ) is = new FileInputStream(inputFile);
-		System.out.println(is);
+
+		ANTLRInputStream input = new ANTLRInputStream(is);
+		PersonableGrammarLexer lexer = new PersonableGrammarLexer(input);
+		CommonTokenStream tokens = new CommonTokenStream(lexer);
+		PersonableGrammarParser parser = new PersonableGrammarParser(tokens);
+		ParseTree tree  = parser.prog();
+
+		System.out.println(tree.toStringTree(parser));
+
+
 	}
 }
