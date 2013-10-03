@@ -31,8 +31,8 @@ public class Personable {
 		PersonableGrammarParser parser = new PersonableGrammarParser(tokens);
 		ParseTree tree  = parser.prog();
 
-		System.out.println(tree.toStringTree(parser));
-
+		PersonableVistorImpl visitor = new PersonableVistorImpl();
+		visitor.visit(tree);
 
 	}
 }
