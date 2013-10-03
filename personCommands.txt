@@ -1,7 +1,16 @@
 define Cobb
 define Leela
 
-//Do some removing
+blame Cobb
+blame Leela
 
+hug Cobb
+hug Leela
+
+//Do some removing
 remove Cobb
+
+//Should log an exception
+blame Cobb
+
 remove Leela

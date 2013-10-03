@@ -39,4 +39,31 @@ public class PersonableVistorImpl extends PersonableGrammarBaseVisitor{
 		personList.remove(value);
 		return personList.toString();
 	}
+
+	@Override
+	public String visitBlamePerson(@NotNull PersonableGrammarParser.BlamePersonContext ctx) {
+		String value = String.valueOf(ctx.ID());
+		if (!personList.contains(value)){
+			System.out.println("++ You must define a person before blaming him or her.");
+			return personList.toString();
+		}
+
+		//do something to blame person
+		System.out.println("++ It's all "+value+"'s fault.");
+		return personList.toString();
+
+	}
+
+	@Override
+	public String visitHugPerson(@NotNull PersonableGrammarParser.HugPersonContext ctx) {
+		String value = String.valueOf(ctx.ID());
+		if (!personList.contains(value)){
+			System.out.println("++ You must define a person before Hugging him or her.");
+			return personList.toString();
+		}
+
+		//do something to hug person
+		System.out.println("Giving " +value +" a hug.");
+		return personList.toString();
+	}
 }
