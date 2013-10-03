@@ -8,7 +8,9 @@ A Trivial Programming Language Example Built with Antlr4 and Maven.
 
 ##Running
 
-   java -jar target/personable-1.0-SNAPSHOT.jar personCommands.txt
+```
+java -jar target/personable-1.0-SNAPSHOT.jar personCommands.txt
+```
 
 This will run the following commands:
 
