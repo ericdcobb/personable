@@ -4,6 +4,8 @@ import com.levelsbeyond.personable.lang.PersonableGrammarBaseVisitor;
 import com.levelsbeyond.personable.lang.PersonableGrammarParser;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import java.util.ArrayList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: ericcobb
@@ -12,6 +14,8 @@ import org.antlr.v4.runtime.misc.NotNull;
  * To change this template use File | Settings | File Templates.
  */
 public class PersonableVistorImpl extends PersonableGrammarBaseVisitor{
+
+	ArrayList<String> personList = new ArrayList<String>();
 
 	@Override
 	public String visitPrintExpr(@NotNull PersonableGrammarParser.PrintExprContext ctx) {
@@ -24,6 +28,15 @@ public class PersonableVistorImpl extends PersonableGrammarBaseVisitor{
 	public String visitDefinePerson(@NotNull PersonableGrammarParser.DefinePersonContext ctx) {
 		String value = String.valueOf(ctx.ID());
 		System.out.println("++ Defining "+value);
-		return value;
+
+		personList.add(value);
+		return personList.toString();
+	}
+
+	@Override
+	public Object visitRemovePerson(@NotNull PersonableGrammarParser.RemovePersonContext ctx) {
+		String value = String.valueOf(ctx.ID());
+		personList.remove(value);
+		return personList.toString();
 	}
 }

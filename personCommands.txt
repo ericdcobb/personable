@@ -1,1 +1,7 @@
 define Cobb
+define Leela
+
+//Do some removing
+
+remove Cobb
+remove Leela
